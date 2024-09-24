@@ -11,4 +11,19 @@ A l'aide d'une boucle, afficher les informations des variables contenues dans le
 
 <?php
 
+$tableauValeurs = [
+    true,
+    "texte",
+    10,
+    25.369,
+    [
+        "valeur1",
+        "valeur2",
+    ],
+]; // on met une virgule après le crochet violet au cas où on rajoute des éléments au tableau plus tard. 
+
+foreach ($tableauValeurs as $valeur) {
+    echo var_dump ($valeur);
+}
+
 ?>

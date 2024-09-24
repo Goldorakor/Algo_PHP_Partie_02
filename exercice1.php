@@ -1,3 +1,11 @@
+
+        <style type="text/css">
+            .special {
+               color: red ;
+            }
+        </style>
+    
+    
 <h1>Exercice 1</h1>
 
 <p>Créer une fonction personnalisée convertirMajRouge() permettant de transformer une chaîne de
@@ -9,5 +17,16 @@ caractères passée en argument en majuscules et en rouge.</p>
 
 
 <?php
+
+$maPhrase = "Je suis en majuscule et rouge.";
+
+echo "Je souhaite transformer $maPhrase en".convertirMajRouge ($maPhrase)." ";
+
+
+// création de la fonction personnalisé convMajRouge
+function convertirMajRouge (string $texte) : string {
+$texteEnMajuscule = mb_strtoupper ($texte);
+return "<p class=special>$texteEnMajuscule</p>";
+}
 
 ?>
