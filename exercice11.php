@@ -48,8 +48,8 @@ public __construct(
     
 */
 
-function formaterDateFr( string $date) : object {
-    $date2 = new DateTime("2018-02-23");
+function formaterDateFr (string $annee) {
+    $date = new DateTime("$annee");
     $fmt = new IntlDateFormatter(
         'fr_FR',
         IntlDateFormatter::FULL,
@@ -57,12 +57,10 @@ function formaterDateFr( string $date) : object {
         'Europe/Paris',
         IntlDateFormatter::GREGORIAN
     );
-    $fmt->format($date2);
+    $fmt -> format($date);
     return $fmt;
 }
 
-echo formaterDateFr("2018-02-23")."<br>";
-echo formaterDateFr("2015-06-23")."<br>";
-echo formaterDateFr("2006-09-10")."<br>";
+echo formaterDateFr("2006-10-10")."<br>";
 
 ?>
