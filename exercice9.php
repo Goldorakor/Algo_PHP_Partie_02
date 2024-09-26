@@ -29,15 +29,13 @@ $nomsRadio = [
     "bouton5" => "unchecked" ,
 ];
 
-function afficherRadio ($nomsRadio) {
-    $resultat = "";
-    $nameAttribut = "CategorieGlobalBouton";
-    foreach ($nomsRadio as $bouton => $cochage){
-        $resultat .= "<div> $bouton
-            <input type=\"radio\" name=\"$nameAttribut\" $cochage />
-                    </div>";
-
+function afficherRadio (array $nomsRadio) : string {
+    $resultat = "<form>";
+    foreach ($nomsRadio as $bouton => $cochage) {
+        $resultat .= "<label for='$bouton'>$bouton</label>
+            <input type='radio' id='$bouton' name='CategorieGlobalBouton' $cochage /><br>";
     }
+    $resultat .= "</form>";
     return $resultat;
 }
 
@@ -46,7 +44,41 @@ echo afficherRadio ($nomsRadio);
 ?>
 
 
-<!-- modèle en HTML car je ne savais plus trop générer des cases à cocher : j'ai donc effectué un petit travail préalable ! 
+
+
+
+
+<!--
+
+bon exemple de input type radio
+
+
+<fieldset>
+  <legend>Select a maintenance drone:</legend>
+
+  <div>
+    <input type="radio" id="huey" name="drone" value="huey" checked />
+    <label for="huey">Huey</label>
+  </div>
+
+  <div>
+    <input type="radio" id="dewey" name="drone" value="dewey" />
+    <label for="dewey">Dewey</label>
+  </div>
+
+  <div>
+    <input type="radio" id="louie" name="drone" value="louie" />
+    <label for="louie">Louie</label>
+  </div>
+</fieldset>
+
+
+
+
+
+
+
+ modèle en HTML car je ne savais plus trop générer des cases à cocher : j'ai donc effectué un petit travail préalable ! 
 
   <div>
     <input type="checkbox" id="scales" name="scales" checked />

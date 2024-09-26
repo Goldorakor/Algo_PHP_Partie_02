@@ -25,8 +25,8 @@ echo "Je souhaite transformer $maPhrase en".convertirMajRouge ($maPhrase)." ";
 
 // création de la fonction personnalisé convMajRouge
 function convertirMajRouge (string $texte) : string {
-$texteEnMajuscule = mb_strtoupper ($texte);
-return "<p class=special>$texteEnMajuscule</p>";
+    $texteEnMajuscule = mb_strtoupper ($texte);
+    return "<p class='special'>$texteEnMajuscule</p>";
 }
 
 ?>

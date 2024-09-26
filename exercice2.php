@@ -44,7 +44,7 @@ $capitales = [
     "France" => "Paris" , 
     "Allemagne" => "Berlin" ,
     "USA" => "Washington" , 
-    "Italie" => "Rome"
+    "Italie" => "Rome" ,
 ];
 
 
@@ -53,9 +53,10 @@ foreach ($capitales as $pays => $capitale) {
 }
 
 
-echo afficherTableHTML ($capitales);
+echo afficherTableHTML ($capitales); // je me sers de la fonction, que je crée juste en dessous - c'est autorisé en PHP pour les fonctions mais pas pour les variables !
 
-function afficherTableHTML (array $capitales) {
+
+function afficherTableHTML (array $capitales) : string {
     ksort($capitales); // pour trier notre tableau alphabétiquement selon les clés
     $result = "<table border = 1>
                 <thead>
@@ -68,9 +69,9 @@ function afficherTableHTML (array $capitales) {
 
     foreach ($capitales as $pays => $capitale) {
        $result .= "<tr>
-                    <td>".mb_strtoupper($pays)."</td>
+                    <td>".mb_strtoupper($pays)."</td> <!-- fonction mb_strtoupper, histoire d'avoir les pays en majuscules ! -->
                     <td>$capitale</td>
-                </tr>";// ne pas oublier \". et .\" pour garder une concaténation correcte.
+                </tr>";// ne pas oublier ". et ." pour garder une concaténation correcte.
     }
 
     $result .= "</tbody>

@@ -12,23 +12,23 @@ afficherInput($nomsInput);</p>
 
 <?php
 
-$nomsInput = [
+$nomsInput100 = [
     "Nom",
     "Prénom",
     "Ville",
 ];
 
-function afficherInput (array $nomsInput) {
-    $result = ""; // il faut bien penser à initialiser cette variable (chaine de caracère vide)
+function afficherInput (array $nomsInput) : string {
+    $result = "<form>"; // je place la balise <form> en dehors de la boucle.
     foreach ($nomsInput as $element) {
-        $result .= "$element<br>
-    <input type='text' id=\"name\" name=\"name\" />
-    <label for=\"name\"></label>
-            <br>"; // il faut bien penser au signe .= pour une concaténation effective ! 
+        $result .= "<label for='name'>$element</label><br>  <!-- il faut bien penser au signe .= pour une concaténation effective ! -->
+    <input type='text' id='name' name='name' />
+            <br>";  
     }
+    $result .= "</form>";  // à nouveau, je place la balise </form> en dehors de la boucle.
     return $result;
 }
 
-echo afficherInput ($nomsInput);
+echo afficherInput ($nomsInput100); // j'ai changé de nom de tableau ($nomsInput100) pour bien montrer que notre fonction s'applique bien entendu à n'importe quel tableau.
 
 ?>

@@ -8,8 +8,8 @@ dans un nouvel onglet (_blank).</p>
 
 <?php
 
-// on fera attention au fait que les guillemets " ont une rôle bien précis en concaténation : on écrira plutôt \" pour faire comprendre que notre guillemet joue ici un rôle différent.
+// on fera attention au fait que les guillemets " ont une rôle bien précis en concaténation : on écrira plutôt '' à l'intérieur des grandes guillemets.
 
-echo "<a href=\"https://elan-formation.fr/accueil\" target=\"_blank\">Veuillez cliquer sur ce lien.</a>";
+echo "<a href='https://elan-formation.fr/accueil' target='_blank'>Veuillez cliquer sur ce lien.</a>";
 
 ?>

@@ -18,7 +18,7 @@ $capitales = ["France"=>"Paris" , "Allemagne"=>"Berlin" , "USA"=>"Washington" , 
         <tr>
             <th>Pays</th>
             <th>Capitales</th>
-            <th>Liens hypertextes</th>
+            <th>Liens hypertextes</th>  <!-- sur la ligne d'entête (la ligne en gras d'un tableau), je rajoute une case au tableau -->
         </tr>
     </thead>
     <!-- Corps du tableau -->
@@ -26,17 +26,17 @@ $capitales = ["France"=>"Paris" , "Allemagne"=>"Berlin" , "USA"=>"Washington" , 
         <tr>
             <td>France</td>
             <td>Paris</td>
-            <td><a href="https://fr.wikipedia.org/wiki/Paris" target="_blank">Veuillez cliquer sur ce lien.</a></td>
+            <td><a href="https://fr.wikipedia.org/wiki/Paris" target="_blank">Veuillez cliquer sur ce lien.</a></td>  <!-- sur la ligne, je rajoute une case au tableau -->
         </tr>
         <tr>
             <td>Allemagne</td>
             <td>Berlin</td>
-            <td><a href="https://fr.wikipedia.org/wiki/Berlin" target="_blank">Veuillez cliquer sur ce lien.</a></td>
+            <td><a href="https://fr.wikipedia.org/wiki/Berlin" target="_blank">Veuillez cliquer sur ce lien.</a></td>  <!-- sur la ligne, je rajoute une case au tableau -->
         </tr>
         <tr>
             <td>USA</td>
             <td>Washington</td>
-            <td><a href="https://fr.wikipedia.org/wiki/Washington" target="_blank">Veuillez cliquer sur ce lien.</a></td>
+            <td><a href="https://fr.wikipedia.org/wiki/Washington" target="_blank">Veuillez cliquer sur ce lien.</a></td>  <!-- sur la ligne, je rajoute une case au tableau -->
         </tr>
      </tbody>
 </table>
@@ -48,7 +48,7 @@ $capitales = [
     "France" => "Paris" , 
     "Allemagne" => "Berlin" ,
     "USA" => "Washington" , 
-    "Italie" => "Rome"
+    "Italie" => "Rome" ,
 ];
 
 
@@ -59,23 +59,23 @@ foreach ($capitales as $pays => $capitale) {
 
 echo afficherTableHTML ($capitales);
 
-function afficherTableHTML (array $capitales) {
+function afficherTableHTML (array $capitales) : string {
     asort($capitales); // pour trier notre tableau alphabétiquement selon les valeurs
     $result = "<table border = 1>
                 <thead>
                     <tr>
                         <th>Pays</th>
                         <th>Capitales</th>
-                        <th>Pages Wikipedia</th>
+                        <th>Pages Wikipedia</th>  <!-- sur la ligne d'entête, je rajoute une case au tableau -->
                     </tr>
                 </thead>
-                <tbody>";
+                <tbody>"; // cette partie ne doit pas être intégrée à la boucle car on ne veut surtout pas répéter cette portion de code ! 
 
     foreach ($capitales as $pays => $capitale) {
        $result .= "<tr>
                     <td>".mb_strtoupper($pays)."</td>
                     <td>$capitale</td>
-                    <td><a href=\"https://fr.wikipedia.org/wiki/$capitale\" target=\"_blank\">Veuillez cliquer sur ce lien.</a></td>
+                    <td><a href='https://fr.wikipedia.org/wiki/$capitale' target='_blank'>Veuillez cliquer sur ce lien.</a></td>   <!-- sur chaque ligne, je rajoute une case au tableau -->
                 </tr>";// ne pas oublier \". et .\" pour garder une concaténation correcte.
     }
 

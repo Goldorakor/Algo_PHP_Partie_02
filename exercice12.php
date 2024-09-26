@@ -23,7 +23,7 @@ $tableauValeurs = [
 ]; // on met une virgule après le crochet violet au cas où on rajoute des éléments au tableau plus tard. 
 
 foreach ($tableauValeurs as $valeur) {
-    echo var_dump ($valeur);
+    var_dump ($valeur);
 }
 
 ?>

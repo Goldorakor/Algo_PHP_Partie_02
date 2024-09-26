@@ -27,10 +27,10 @@ var_dump : un string si adresse valide, un bool=false si adresse invalide.
 $email = "elan@elan-formarion.fr";
 
 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-echo "$email est une adresse e-mail valide.<br>";
+    echo "$email est une adresse e-mail valide.<br>";
 } 
 else {
-echo "$email est une adresse e-mail invalide.<br>";
+    echo "$email est une adresse e-mail invalide.<br>";
 }
 
 var_dump (filter_var($email, FILTER_VALIDATE_EMAIL));
@@ -39,9 +39,9 @@ var_dump (filter_var($email, FILTER_VALIDATE_EMAIL));
 $email = "contact@elan";
 
 if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-echo "$email est une adresse e-mail valide.<br>";
+    echo "$email est une adresse e-mail valide.<br>";
 } else {
-echo "$email est une adresse e-mail invalide.<br>";
+    echo "$email est une adresse e-mail invalide.<br>";
 }
 
 var_dump (filter_var($email, FILTER_VALIDATE_EMAIL));

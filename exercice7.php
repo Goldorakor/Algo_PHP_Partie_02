@@ -42,13 +42,16 @@ $elements = [
     "proposition5" => "unchecked" ,
 ]; // astuce : non coché = unchecked
 
-function genererCheckBox (array $elements) {
-    $result = ""; // il faut bien penser à initialiser cette variable (chaine de caracère vide)
+
+
+function genererCheckBox (array $elements) : string {
+    $result = "<form>"; // il faut bien penser à placer notre balise formulaire avant le début de la boucle
     foreach ($elements as $proposition => $cochage) {
-        $result .= "<input type='checkbox' id=\"$proposition\" name=\"$proposition\" $cochage />
-    <label for=\"$proposition\">$proposition</label>
+        $result .= "<input type='checkbox' id='$proposition' name='$proposition' $cochage />
+    <label for='$proposition'>$proposition</label>
             <br>"; // il faut bien penser au signe .= pour une concaténation effective ! 
     }
+    $result .="</form>"; // il faut bien penser à placer notre balise formulaire après la boucle
     return $result;
 }
 
