@@ -16,7 +16,10 @@ formaterDateFr("2018-02-23");</p>
 $date2 = new DateTime("2018-02-23"); // $date2 est un objet (provenant de la classe DateTime) et DateTime est une classe. (plein de fonctions existantes, appelées méthodes)
 $now = new DateTime(); // $now est un autre objet provenant de la classe DateTime - ()vide => date actuelle
 
+echo "<br>repère 1<br>";
 var_dump($now);
+
+echo "<br>repère 2<br>";
 var_dump($now->format("d.m.Y"));
 
 $fmt = new IntlDateFormatter(
@@ -26,6 +29,13 @@ $fmt = new IntlDateFormatter(
     'Europe/Paris',
     IntlDateFormatter::GREGORIAN
 ); // $fmt est un objet provenant de la classe IntlDateFormatter - new pour indiquer la création de l'objet.
+
+echo "<br>repère 3<br>";
+var_dump($date2);
+
+echo "<br>repère 4<br>";
+var_dump($fmt);
+
 
 echo $fmt->format($date2)."<br>"; // -> sert à appeler une fonction quand on travaille "en objet" . $date2 est l'argument de la fonction "format" que j'appelle (pour l'objet $fmt).
 
@@ -48,8 +58,10 @@ public __construct(
     
 */
 
-function formaterDateFr (string $annee) {
-    $date = new DateTime("$annee");
+function formaterDateFr (string $annee , string $mois, string $jour) {
+    $date2 = "$annee-$mois-$jour";
+    $date = new DateTime("$date2");
+    $date
     $fmt = new IntlDateFormatter(
         'fr_FR',
         IntlDateFormatter::FULL,
@@ -58,9 +70,10 @@ function formaterDateFr (string $annee) {
         IntlDateFormatter::GREGORIAN
     );
     $fmt -> format($date);
+    // $result = echo $fmt->format($date2);
     return $fmt;
 }
 
-echo formaterDateFr("2006-10-10")."<br>";
+echo formaterDateFr("2006" , "10" , "10")."<br>";
 
 ?>
