@@ -16,24 +16,21 @@ de validation (submit).</p>
 $nomsInputAssociatif = [
     "Nom" => "text" ,
     "Prénom" => "text" ,
-    "Adresse email" => "email" ,
-    "Ville" => "text" ,
+    "Adresse_email" => "email" ,
+    "Ville" => "text",
 ];
-
 
 $sexe = [
-    "Masculin" => "checked" ,
-    "Féminin" => "unchecked" ,
-];
-
+    "Masculin" ,
+    "Féminin" ,
+    ];
 
 $metiers = [
     "Développeur Logiciel" ,
     "Designer web" ,
     "Intégrateur" ,
-    "Chef de projet" ,
+    "Chef de projet" , 
 ];
-
 
 $validation = [
     "" => "submit" ,
@@ -45,90 +42,68 @@ $nomsInputGlobal = [
     $metiers ,
 ];
 
+echo "<form>".afficherInput ($nomsInputAssociatif)."<br>".afficherRadio ($sexe)."<br>".alimenterListeDeroulante ($metiers)."<br>".afficherInput ($validation)."<br></form>"; // on a viré les balises <form> des fonctions pour les mettre ici pour avoir un formulaire global et pas plusieurs mini formulaires.
 
-
-echo afficherInput3 ($nomsInputAssociatif)."<br>";
-echo afficherRadio ($sexe)."<br><br>";
-echo alimenterListeDeroulante ($metiers)."<br>";
-echo afficherInput3 ($validation)."<br>";
-
-
-
-
-
-
-// je reprends la fonction de l'exercice 5 utile pour créer un formulaire de champs de texte
-
-function afficherInput (array $nomsInput) : string {
-    $result = "<form>"; // je place la balise <form> en dehors de la boucle.
-    foreach ($nomsInput as $element) {
-        $result .= "<label for='name'>$element</label><br>  <!-- il faut bien penser au signe .= pour une concaténation effective ! -->
-    <input type='text' id='name' name='name' /><br>";  
-    }
-    $result .= "</form>";  // à nouveau, je place la balise </form> en dehors de la boucle. il faut bien penser au signe .= devant $result pour une concaténation effective !
+function afficherFormulaire (array $nomsInputAssociatif , array $sexe , array $metiers , array $validation) : string {
+    $result = "<form>";
+    $result .= afficherInput ($nomsInputAssociatif)."<br>";
+    $result .= afficherRadio ($sexe)."<br>";
+    $result .= alimenterListeDeroulante ($metiers)."<br>";
+    $result .= afficherInput ($validation)."<br>";
+    $result .= "</form>";
     return $result;
 }
 
-
-// je reprends la fonction de l'exercice 5 utile pour créer un formulaire de champs de texte, mais pour une entrée type "email"
-
-function afficherInput2 (array $nomsInput) : string {
-    $result = "<form>"; // je place la balise <form> en dehors de la boucle.
-    foreach ($nomsInput as $element) {
-        $result .= "<label for='name'>$element</label><br>  <!-- il faut bien penser au signe .= pour une concaténation effective ! -->
-    <input type='email' id='name' name='name' /><br>";  
-    }
-    $result .= "</form>";  // à nouveau, je place la balise </form> en dehors de la boucle. il faut bien penser au signe .= devant $result pour une concaténation effective !
-    return $result;
-}
+echo "<h3>essai avec la fonction afficherFormulaire</h3>";
+echo afficherFormulaire ($nomsInputAssociatif , $sexe , $metiers ,  $validation);
 
 
 // tentative pour améliorer afficherInput pour que la fonctionne sache distinguer le type associé à input : text, button, checkbox, email et autres
 
-function afficherInput3 (array $nomsInput) : string {
-    $result = "<form>"; 
+function afficherInput (array $nomsInput) : string {
+    $result = ""; // <form> supprimé
     foreach ($nomsInput as $element => $type) {
         $result .= "<label for='name'>$element</label><br>
     <input type='$type' id='name' name='name' /><br>"; 
     }
-    $result .= "</form>";
+    $result .= ""; // </form> supprimé
     return $result;
 }
 
 // je reprends la fonction de l'exercice 6 utile pour remplir une liste déroulante à partir d'un tableau de valeurs
 
 function alimenterListeDeroulante (array $elements) : string {
-    $result = "<form><label for='choixCivilite'>Choix de la civilité :</label><br>
-    <select name='civilite' id='choixCivilite'>
-  <option value=''>--  Faites votre choix  --</option>";
-    foreach ($elements as $element){
+    $result = "<label for='choixFormation'>Intitulé de formation :</label><br>
+    <select name='civilite' id='choixFormation'>
+  <option value=''>--  Faites votre choix  --</option>";// <form> devant <label .... enlevé
+    foreach ($elements as $element) {
         $result .= "<option value='$element'>$element</option>";
     }
-    $result .= "</select></form>";
+    $result .= "</select>"; // </form> supprimé
     return $result;
 }
 
 // je reprends la fonction de l'exercice 7 utile pour générer des cases à cocher
 
 function genererCheckBox (array $elements) : string {
-    $result = "<form>"; // il faut bien penser à placer notre balise formulaire avant le début de la boucle
+    $result = ""; // il faut bien penser à placer notre balise formulaire avant le début de la boucle - enlevée dans ce cas précis car on veut un formulaire global
     foreach ($elements as $proposition => $cochage) {
         $result .= "<input type='checkbox' id='$proposition' name='$proposition' $cochage />
     <label for='$proposition'>$proposition</label><br>"; // il faut bien penser au signe .= pour une concaténation effective ! 
     }
-    $result .="</form>"; // il faut bien penser à placer notre balise formulaire après la boucle
+    $result .=""; // il faut bien penser à placer notre balise formulaire après la boucle - enlevée dans ce cas précis car on veut un formulaire global
     return $result;
 }
 
 // je reprends la fonction de l'exercice 9 utile pour générer des boutons "radio"
 
 function afficherRadio (array $nomsRadio) : string {
-    $resultat = "<form>";
-    foreach ($nomsRadio as $bouton => $cochage) {
+    $resultat = ""; // <form> supprimé
+    foreach ($nomsRadio as $bouton) {
         $resultat .= "<label for='$bouton'>$bouton</label>
-            <input type='radio' id='$bouton' name='CategorieGlobalBouton' $cochage /><br>";
+            <input type='radio' id='$bouton' name='CategorieGlobalBouton' /><br>";
     }
-    $resultat .= "</form>";
+    $resultat .= ""; // </form> supprimé
     return $resultat;
 }
 
